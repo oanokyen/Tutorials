@@ -13,7 +13,7 @@ reinforces what you've already learned.
 import random
 
 
-LEXICON_FILE = "Lexicon.txt"    # File to read word list from
+#LEXICON_FILE = "Lexicon.txt"    # File to read word list from
 INITIAL_GUESSES = 8             # Max number of guesses per game
 
 #def choose_word_length():
@@ -55,7 +55,7 @@ def play_game(secret_word):
         if user_input=="END":
             break
         guess-=1
-        if guess<1:
+        if guess<1 & (secret_word_loop!="-"*len(secret_word_loop)) :
             print("Sorry, you lost. The secret word was:", secret_word)
             break
         if (secret_word_loop=="-"*len(secret_word_loop)):
@@ -90,8 +90,15 @@ def load_dict():
     This function returns a list of all words in the dictionary as specified in 
     the LEXICON_FILENAME
     """
+    user_input = input("Select word game: type L for all Lexicon; type F for Top Frequency Words ").upper()
+    if user_input == "F":
+        FILE= "Frequency.txt"
+        print("Welcome to High Frequency Word Game !")
+    else:
+        FILE="Lexicon.txt"
+        print("Welcome to All Lexicon Word Game")
     lines=[]
-    with open(LEXICON_FILE) as f:
+    with open(FILE) as f:
         for line in f:
             line = line.strip()
             if line != "":
