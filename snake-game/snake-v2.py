@@ -99,7 +99,7 @@ def main():
         
         # when snake eats food
         if (x_loc ==canvas.get_left_x(snake_food)) and (y_loc==canvas.get_top_y(snake_food)):            
-            SCORE+=5
+            SCORE+=1
             
             # get new snake_rect shape coordinate
             snake_rect=[]
